@@ -2,29 +2,29 @@
 
 ### Сreate a virtual environment
 `
-python -m venv .
+  python -m venv .
 `
 
 
 ### Activate the virtual environment:
-'''
-.\Scripts\activate
-'''
+`
+  .\Scripts\activate
+`
 
 ### Upgrade pip
-'''
-python -m pip install --upgrade pip
-'''
+`
+  python -m pip install --upgrade pip
+`
 
 ### Install all the dependencies listed in the `requirements.txt`
-'''
-pip install requirements.txt
-'''
+`
+  pip install requirements.txt
+`
 
 ## Run Program
 
 ### PyQt6-based player
-'''
-python main.py
-'''
+`
+  python main.py
+`
 
