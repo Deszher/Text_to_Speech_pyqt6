@@ -1,7 +1,11 @@
 # PyQt6 Video/Audio Player with Text to Speech conversion
 
 ### Сreate a virtual environment
-\python -m venv .\
+\`\`\`
+\`\`\`bash
+python -m venv .
+\`\`\`
+\`\`\`
 
 
 ### Activate the virtual environment:
