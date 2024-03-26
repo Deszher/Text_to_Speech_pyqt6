@@ -1,4 +1,5 @@
-# PyQt6 Video/Audio Player with Text to Speech conversion
+# PyQt6 Video/Audio Player with Text to Speech conversion ![image](https://github.com/Deszher/Text_to_Speech_pyqt6/assets/143352282/4999eea5-9962-4cfa-bb56-d9648cc3d8f9)
+
 На данный момент приложение принимет печатный текст, переводит его в речь.<br> В дальнейшем планируется, что можно будет не только озвучить текст, но и выбрать фотографию или картинку с лицом человека и получить "говорящую голову".
 
 #### Сreate a virtual environment
