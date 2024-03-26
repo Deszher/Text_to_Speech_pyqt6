@@ -28,7 +28,7 @@ def get_speech(text, selected_speaker) -> str:
         text=text,
         speaker=selected_speaker,
         sample_rate=sample_rate,
-        audio_path=audio_path
+        audio_path=audio_path,
     )
     _ = audio_paths
     # print(audio_paths)
