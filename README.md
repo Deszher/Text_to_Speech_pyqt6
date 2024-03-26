@@ -1,4 +1,5 @@
-# PyQt6 Video/Audio Player with Text to Speech conversion ![image](https://github.com/Deszher/Text_to_Speech_pyqt6/assets/143352282/159b1739-69e8-4cbf-9499-f2e1c900083b)
+# PyQt6 Video/Audio Player with Text to Speech conversion ![image](https://github.com/Deszher/Text_to_Speech_pyqt6/assets/143352282/dfc53dec-6119-468e-8d1c-2e69292fedc6)
+
 
 На данный момент приложение принимет печатный текст, переводит его в речь.<br> В дальнейшем планируется, что можно будет не только озвучить текст, но и выбрать фотографию или картинку с лицом человека и получить "говорящую голову".
 
@@ -71,3 +72,6 @@ docker build --platform=linux/amd64 -t djvue/urfu-deployments:pi2-latest .
 # push (requires docker login to hub.docker)
 docker push djvue/urfu-deployments:pi2-latest
 ```
+______________________________________
+[![Python application](https://github.com/Deszher/Text_to_Speech_pyqt6/actions/workflows/python-app.yml/badge.svg)](https://github.com/Deszher/Text_to_Speech_pyqt6/actions/workflows/python-app.yml)<br>
+[![Black](https://github.com/Deszher/Text_to_Speech_pyqt6/actions/workflows/black.yml/badge.svg)](https://github.com/Deszher/Text_to_Speech_pyqt6/actions/workflows/black.yml)
