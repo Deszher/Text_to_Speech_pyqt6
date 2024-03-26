@@ -50,8 +50,7 @@ def process(
         "status": "ok",
         "speech": "/" + data.audio_file_path,
         "video": "/" + data.video_file_path,
-    }
-    
+    }    
 
 @app.get("/")
 def index(request: Request):
