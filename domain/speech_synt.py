@@ -10,7 +10,7 @@ def get_speech(text, selected_speaker) -> str:
     device = torch.device("cpu")
     torch.set_num_threads(4)
 
-    local_file = 'model.pt'
+    local_file = "model.pt"
 
     if not os.path.isfile(local_file):
         torch.hub.download_url_to_file(
