@@ -1,4 +1,3 @@
-
 class ProcessData:
     input_text: str = None
     input_speaker: str = None
