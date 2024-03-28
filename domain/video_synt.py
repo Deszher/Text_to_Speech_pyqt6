@@ -45,6 +45,6 @@ def make_video(img_path: str, audio_path, phoneme_path: str) -> str:
 
     print("make video code: ", response)
 
-    output_path = output_path + "/" + os.path.basename(img_path)[:-4] + "_" + os.path.basename(audio_path)[:-4] + ".mp4"
+    output_path = output_dir + "/" + os.path.basename(img_path)[:-4] + "_" + os.path.basename(audio_path)[:-4] + ".mp4"
 
     return output_path
