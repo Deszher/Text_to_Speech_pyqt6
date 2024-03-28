@@ -1,7 +1,6 @@
 import os
 import subprocess
 import torchaudio
-from one_shot_talking_face.test_script import parse_phoneme_file, test_with_input_audio_and_image
 
 PHONEME_JK = '[.w[]|{word: (.t | ascii_upcase | sub("<S>"; "sil") | sub("<SIL>"; "sil") | sub("\\(2\\)"; "") | sub("\\(3\\)"; "") | sub("\\(4\\)"; "") | sub("\\[SPEECH\\]"; "SIL") | sub("\\[NOISE\\]"; "SIL")), phones: [.w[]|{ph: .t | sub("\\+SPN\\+"; "SIL") | sub("\\+NSN\\+"; "SIL"), bg: (.b*100)|floor, ed: (.b*100+.d*100)|floor}]}]',
 # pocketsphinx -phone_align yes single /content/audio.wav "Can you give me cup of tea please" \
