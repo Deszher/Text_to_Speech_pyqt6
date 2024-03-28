@@ -18,13 +18,11 @@ def create_phoneme(audio_path: str, text: str) -> str:
     output_path = audio_path[:-4] + "_phoneme.json"
 
     response= subprocess.run(
-        [
-            "pocketsphinx", "-phone_align", "yes", "single", "/app/"+audio_path, text,
-            "|", "jq", PHONEME_JK, ">", "/app/"+output_path,
-        ],
+        "pocketsphinx -phone_align yes single /app/"+audio_path+" "+text+" | jq "+PHONEME_JK+ "> /app/"+output_path,
         capture_output=True,
         shell=True,
         cwd="/app",
+        executable="/bin/bash",
     )
 
     print("create phoneme code, stdout:", response.stdout, "stderr:", response.stderr)
@@ -35,10 +33,11 @@ def make_video(img_path: str, audio_path, phoneme_path: str) -> str:
     output_dir = "data"
 
     response= subprocess.run(
-        ["python3", "-m", "test_script.py", "--img_path", img_path, "--audio_path", audio_path, "--phoneme_path", phoneme_path, "--save_dir", output_dir],
+        "python3 -m test_script.py --img_path " + img_path + " --audio_path " + audio_path + " --phoneme_path " + phoneme_path + " --save_dir " + output_dir,
         capture_output=True,
         shell=True,
         cwd="/app/one_shot_talking_face",
+        executable="/bin/bash",
     )
 
     print("make video code, stdout:", response.stdout, "stderr:", response.stderr)
