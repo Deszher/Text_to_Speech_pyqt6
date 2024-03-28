@@ -81,7 +81,7 @@ RUN pip3 install pocketsphinx imageio-ffmpeg numpy==1.23.0 pandas pyyaml==5.3.1
 # pip torch CPU
 RUN pip3 install torch torchvision torchaudio torchtext torchdata --index-url https://download.pytorch.org/whl/cpu
 # pip one-shot-talking-face requirements
-RUN apt install -y python3.10-dev libavdevice-dev libavfilter-dev libavformat-dev libavcodec-dev libswresample-dev libswscale-dev libavutil-dev
+RUN apt install -y python3.10-dev libavdevice-dev libavfilter-dev libavformat-dev libavcodec-dev libswresample-dev libswscale-dev libavutil-dev libsox-dev
 RUN pip3 install scikit-image python_speech_features pyworld pyyaml imageio scipy pyworld opencv-python dlib
 
 ###
