@@ -11,7 +11,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN apt install libsox-dev
+RUN apt install -y libsox-dev
 RUN pip3 install -r requirements.txt
 
 COPY --from=frontend-builder /app/dist /app/ui/web/frontend/dist
