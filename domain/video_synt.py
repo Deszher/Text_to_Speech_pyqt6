@@ -1,3 +1,4 @@
+import os
 import subprocess
 import torchaudio
 from one_shot_talking_face.test_script import parse_phoneme_file, test_with_input_audio_and_image
@@ -24,17 +25,25 @@ def create_phoneme(audio_path: str, text: str) -> str:
         ], 
         stdout=subprocess.DEVNULL,
         stderr=subprocess.STDOUT,
+        cwd="/app",
     )
+
+    print("create phoneme code: ", response)
 
     return output_path
 
 def make_video(img_path: str, audio_path, phoneme_path: str) -> str:
-    output_path = "data"
+    output_dir = "data"
 
-    generator_ckpt = "/content/checkpoint/generator.ckpt"
-    audio2pose_ckpt = "/content/checkpoint/audio2pose.ckpt"
+    response= subprocess.call(
+        ["python3", "-m", "test_script.py", "--img_path", img_path, "--audio_path", audio_path, "--phoneme_path", phoneme_path, "--save_dir", output_dir], 
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.STDOUT,
+        cwd="/app/one_shot_talking_face",
+    )
 
-    phoneme = parse_phoneme_file(phoneme_path)
-    test_with_input_audio_and_image(img_path, audio_path, phoneme, generator_ckpt, audio2pose_ckpt, output_path)
+    print("make video code: ", response)
+
+    output_path = output_path + "/" + os.path.basename(img_path)[:-4] + "_" + os.path.basename(audio_path)[:-4] + ".mp4"
 
     return output_path

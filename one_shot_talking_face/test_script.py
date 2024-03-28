@@ -161,10 +161,6 @@ def test_with_input_audio_and_image(img_path, audio_path,phs, generator_ckpt, au
     os.remove(video_path)
 
 
-
-
-
-
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--img_path", type=str, default=None, help="path of the input image ( .jpg ), preprocessed by image_preprocess.py")
