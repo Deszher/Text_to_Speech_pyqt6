@@ -17,33 +17,31 @@ def convert_audio_to_16k(input_path: str) -> str:
 def create_phoneme(audio_path: str, text: str) -> str:
     output_path = audio_path[:-4] + "_phoneme.json"
 
-    response= subprocess.call(
+    response= subprocess.run(
         [
             "pocketsphinx", "-phone_align", "yes", "single", "/app/"+audio_path, text,
             "|", "jq", PHONEME_JK, ">", "/app/"+output_path,
         ],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.STDOUT,
+        capture_output=True,
         shell=True,
         cwd="/app",
     )
 
-    print("create phoneme code: ", response)
+    print("create phoneme code, stdout:", response.stdout, "stderr:", response.stderr)
 
     return output_path
 
 def make_video(img_path: str, audio_path, phoneme_path: str) -> str:
     output_dir = "data"
 
-    response= subprocess.call(
-        ["python3", "-m", "test_script.py", "--img_path", img_path, "--audio_path", audio_path, "--phoneme_path", phoneme_path, "--save_dir", output_dir], 
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.STDOUT,
+    response= subprocess.run(
+        ["python3", "-m", "test_script.py", "--img_path", img_path, "--audio_path", audio_path, "--phoneme_path", phoneme_path, "--save_dir", output_dir],
+        capture_output=True,
         shell=True,
         cwd="/app/one_shot_talking_face",
     )
 
-    print("make video code: ", response)
+    print("make video code, stdout:", response.stdout, "stderr:", response.stderr)
 
     output_path = output_dir + "/" + os.path.basename(img_path)[:-4] + "_" + os.path.basename(audio_path)[:-4] + ".mp4"
 
