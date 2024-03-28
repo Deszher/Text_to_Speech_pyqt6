@@ -2,7 +2,7 @@ import os
 import subprocess
 import torchaudio
 
-PHONEME_JK = '[.w[]|{word: (.t | ascii_upcase | sub("<S>"; "sil") | sub("<SIL>"; "sil") | sub("\\(2\\)"; "") | sub("\\(3\\)"; "") | sub("\\(4\\)"; "") | sub("\\[SPEECH\\]"; "SIL") | sub("\\[NOISE\\]"; "SIL")), phones: [.w[]|{ph: .t | sub("\\+SPN\\+"; "SIL") | sub("\\+NSN\\+"; "SIL"), bg: (.b*100)|floor, ed: (.b*100+.d*100)|floor}]}]',
+PHONEME_JK = '[.w[]|{word: (.t | ascii_upcase | sub("<S>"; "sil") | sub("<SIL>"; "sil") | sub("\\(2\\)"; "") | sub("\\(3\\)"; "") | sub("\\(4\\)"; "") | sub("\\[SPEECH\\]"; "SIL") | sub("\\[NOISE\\]"; "SIL")), phones: [.w[]|{ph: .t | sub("\\+SPN\\+"; "SIL") | sub("\\+NSN\\+"; "SIL"), bg: (.b*100)|floor, ed: (.b*100+.d*100)|floor}]}]'
 # pocketsphinx -phone_align yes single /content/audio.wav "Can you give me cup of tea please" \
     #     | jq '[.w[]|{word: (.t | ascii_upcase | sub("<S>"; "sil") | sub("<SIL>"; "sil") | sub("\\(2\\)"; "") | sub("\\(3\\)"; "") | sub("\\(4\\)"; "") | sub("\\[SPEECH\\]"; "SIL") | sub("\\[NOISE\\]"; "SIL")), phones: [.w[]|{ph: .t | sub("\\+SPN\\+"; "SIL") | sub("\\+NSN\\+"; "SIL"), bg: (.b*100)|floor, ed: (.b*100+.d*100)|floor}]}]' > /content/test.json
 
@@ -21,9 +21,10 @@ def create_phoneme(audio_path: str, text: str) -> str:
         [
             "pocketsphinx", "-phone_align", "yes", "single", "/app/"+audio_path, text,
             "|", "jq", PHONEME_JK, ">", "/app/"+output_path,
-        ], 
+        ],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.STDOUT,
+        shell=True,
         cwd="/app",
     )
 
@@ -38,6 +39,7 @@ def make_video(img_path: str, audio_path, phoneme_path: str) -> str:
         ["python3", "-m", "test_script.py", "--img_path", img_path, "--audio_path", audio_path, "--phoneme_path", phoneme_path, "--save_dir", output_dir], 
         stdout=subprocess.DEVNULL,
         stderr=subprocess.STDOUT,
+        shell=True,
         cwd="/app/one_shot_talking_face",
     )
 
